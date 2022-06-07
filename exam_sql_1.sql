@@ -108,4 +108,27 @@ where commission_pct * 100 > 20;
 
 -- Practice 3
 -- 1.
+select sysdate, current_date
+from dual;
+
+-- 2.
+select employee_id, last_name, salary, salary * 1.15 as "New Salary"
+from employees;
+
+-- 3.
+select employee_id, last_name, salary, salary * 1.15 as "New Salary", salary * 0.15 as "Increase"
+from employees;
+
+-- 4.
+select last_name, length(last_name) as length
+from employees
+where last_name like 'J%'
+or last_name like 'A%'
+or last_name like 'M%'
+order by 1;
+
+-- 5.
+select last_name, round(months_between (sysdate, hire_date)) as months_worked
+from employees
+order by months_worked;
 
