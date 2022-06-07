@@ -148,7 +148,7 @@ SELECT
     d.department_name
 FROM
     employees   e
-    LEFT OUTER JOIN departments d ON ( e.department_id = d.department_id );
+    LEFT OUTER JOIN departments d ON ( e.department_id = d.department_id ); -- left는 왼쪽, right는 오른쪽 테이블에 값이 있을 경우 반대 테이블이 조건에 맞지 않아도 null 값으로 가져온다
 
 select employee_id, last_name, department_id
 from employees;

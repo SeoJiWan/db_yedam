@@ -186,7 +186,7 @@ UPPER(CONCAT(SUBSTR (LAST_NAME, 1, 8), '_US'))
 FROM   employees
 WHERE  department_id = 60;
 
--- 일반함수 NVL : null 값을 원하는 값으로 치환 --
+-- 일반함수 NVL : null 값을 원하는 값으로 치환 -- --> nvl 함수 안의 두 파라미터가 타입이 같아야 한다.
 SELECT 
     employee_id, 
     last_name, salary, 

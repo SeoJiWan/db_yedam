@@ -293,6 +293,6 @@ WHERE
         WHERE
             manager_id IS NOT NULL
     ); 
-    --> in 값 안의 null 이 있으면, 그 행은 무시 
+    --> in 값 안의 null 이 있으면, 그 행은 무시 ('=' 으로 연산하기 때문)
     --> not in (x, y ,null) 일때 or 연산이 and 연산으로 바뀌면서 출력결과가 무조건 없음
     --> 해결방법 : 애초에 서브쿼리 안에서 null 이 아닌 값만 in 안에 들어오도록 한다.
