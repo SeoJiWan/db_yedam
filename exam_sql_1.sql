@@ -301,7 +301,7 @@ FROM
 -- 5.
 SELECT
     last_name,
-    nvl(to_char(commission_pct, '0.9'), 'No Commission') --> nvl �Լ� ���� �� �Ķ���ʹ� Ÿ���� ���ƾ� ��
+    nvl(to_char(commission_pct, '0.9'), 'No Commission') --> nvl 占쌉쇽옙 占쏙옙占쏙옙 占쏙옙 占식띰옙占쏙옙姑占� 타占쏙옙占쏙옙 占쏙옙占싣억옙 占쏙옙
 FROM
     employees;
 
@@ -434,3 +434,32 @@ select  e.last_name as "Employee",
         m.employee_id as "Mgr#"
 from employees e
 join employees m on (e.manager_id = m.employee_id);
+
+-- 5.
+select  e.last_name as "Employee", 
+        e.employee_id as "Emp#",
+        m.last_name as "Manager",
+        m.employee_id as "Mgr#"
+from employees e
+left outer join employees m on (e.manager_id = m.employee_id)
+order by 2;
+
+-- 6.
+select e.last_name, e.department_id, c.last_name, d.department_name
+from employees e
+join employees c on (e.department_id = c.department_id)
+join departments d on (e.department_id = d.department_id)
+order by 2, 1, 3;
+
+select last_name, department_id
+from employees
+order by 2;
+
+-- 7.
+desc job_grades;
+
+select e.last_name, e.job_id, d.department_name, e.salary, j.grade_level
+from employees e
+join departments d on (e.department_id = d.department_id)
+join job_grades j on (e.salary between j.lowest_sal and j.highest_sal);
+

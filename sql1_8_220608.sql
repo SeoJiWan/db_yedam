@@ -10,7 +10,7 @@ FROM
     job_history;
     
 -- << union (합집합) >> -- 
---> sql 에서 집합은 정적인게 아니다. 각 칼럼의 데이터가 전부 같아야 중복이다. 
+--> sql 에서 집합은 정적인게 아니다. 각 칼럼의 데이터가 전부 같아야 중복이어서 출력되지 않는다.
 SELECT
     employee_id
 FROM
@@ -178,6 +178,7 @@ SELECT
     department_name
 FROM
     departments;
+    
 --COLUMN수와 DATATYPE 매칭시키기 응용
 SELECT
     department_id,
@@ -204,7 +205,8 @@ SELECT
     SUM(salary)
 FROM
     employees;
---
+    
+-----
 SELECT
     department_id,
     job_id,
