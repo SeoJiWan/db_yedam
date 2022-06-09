@@ -233,11 +233,14 @@ TRUNCATE TABLE sales_reps; --> DDL --> 자동 커밋 --> rollback 안먹음.
 SELECT * FROM sales_reps;
 ROLLBACK;
 SELECT * FROM sales_reps;
+
 INSERT INTO sales_reps
 SELECT employee_id, last_name, salary, commission_pct
 FROM   employees
 WHERE  job_id LIKE '%REP%';
+
 SELECT * FROM sales_reps;
+
 COMMIT;
 
 
