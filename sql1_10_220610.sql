@@ -129,13 +129,6 @@ FROM
     dept;
 
 --기본키와 기본값 열을 포함하는 테이블 생성
-CREATE TABLE dept (
-    deptno      NUMBER(2) PRIMARY KEY,
-    dname       VARCHAR2(14),
-    loc         VARCHAR2(13),
-    create_date DATE DEFAULT sysdate
-);
-
 DROP TABLE dept;
 
 CREATE TABLE dept (
