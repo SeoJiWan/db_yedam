@@ -8,6 +8,7 @@ CREATE TABLE emp2
         FROM
             employees;
 
+-- 제약조건 확인
 SELECT
     table_name,
     constraint_name,
@@ -19,7 +20,7 @@ FROM
 WHERE
     table_name = 'EMP2';
     
---Adding a Constraints
+-- 제약조건 추가
 ALTER TABLE emp2 ADD PRIMARY KEY ( employee_id );
 
 ALTER TABLE emp2 ADD CONSTRAINT emp2_email_uk UNIQUE ( email );
@@ -201,7 +202,7 @@ FROM
 WHERE
     table_name = 'TEST1';
 
--- c 제약조건 : a > 0 뭉 c > 0
+-- c 제약조건 : a > 0 and c > 0
 ALTER TABLE test1 DROP COLUMN c;
 
 ALTER TABLE test1 DROP COLUMN a;
@@ -236,7 +237,7 @@ WHERE
 
 DESC test1
 
---Renaming Table Columns and Contraints
+-- 칼럼이름 및 제약조건 이름 변경 (create table ... rename column .... to ....)
 DESC emp2
 
 ALTER TABLE emp2 RENAME COLUMN employee_id TO empid;

@@ -1,5 +1,5 @@
 --Creating a Temporary Table
--- > temporary table 테이블명 on commit delete rows --> 커밋시 테이블 삭제
+-- > temporary table 테이블명 on commit delete rows --> create 문 자동 커밋 --> 커밋시 테이블 삭제
 CREATE GLOBAL TEMPORARY TABLE emp_temp1 ON COMMIT DELETE ROWS
     AS
         SELECT

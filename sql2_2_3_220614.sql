@@ -8,6 +8,7 @@ CREATE TABLE emp2 (
     department_id NUMBER(3)
 );
 
+-- 제약조건 조회
 SELECT
     table_name,
     constraint_name,
@@ -18,6 +19,7 @@ FROM
 WHERE
     table_name = 'EMP2';
 
+-- 인덱스 조회
 SELECT
     table_name,
     index_name
@@ -26,6 +28,7 @@ FROM
 WHERE
     table_name = 'EMP2';
 
+-- primary key disable 시 primary key 인덱스 없어짐
 ALTER TABLE emp2 DISABLE PRIMARY KEY;
 
 SELECT
@@ -68,10 +71,11 @@ WHERE
 
 DROP TABLE emp2 PURGE;
 
+-- 수동으로 이름을 정해서 인덱스 생성
 CREATE TABLE emp2 (
     empid         NUMBER(6)
         PRIMARY KEY
-            USING INDEX ( -- 수동으로 이름을 정해서 인덱스 생성
+            USING INDEX ( 
                 CREATE INDEX emp2_empid_idx ON
                     emp2 (
                         empid
@@ -141,13 +145,18 @@ FROM
 WHERE
     table_name = 'EMP2';
     
---Function Based Indexes
-CREATE INDEX emp_sal_ix ON
+--Function Based Indexes (함수 기반 인덱스)
+CREATE INDEX emp_sal_idx ON
     employees (
         salary
     );
+
+select table_name, index_name
+from user_indexes
+where table_name = 'EMPLOYEES';
+
 -- index 사용 모니터링
-ALTER INDEX emp_sal_ix MONITORING USAGE;
+ALTER INDEX emp_sal_idx MONITORING USAGE;
 
 SELECT
     *
@@ -156,18 +165,19 @@ FROM
 WHERE
     salary * 12 > 80000;
 
+-- 모니터링중인 인덱스 사용하는 지 확인 (monitoring : yes or no)
 SELECT
     *
 FROM
     v$object_usage;
 
-DROP INDEX emp_sal_ix;
+DROP INDEX emp_sal_idx;
 
 -- 함수 기반 인덱스 -> 칼럼자리에 식
-CREATE INDEX emp_annsal_ix ON
+CREATE INDEX emp_annsual_ix ON
     employees ( salary * 12 );
 
-ALTER INDEX emp_annsal_ix MONITORING USAGE;
+ALTER INDEX emp_annsual_ix MONITORING USAGE;
 
 SELECT
     *
@@ -182,7 +192,7 @@ FROM
     v$object_usage;
     
 --Clear Test
-DROP INDEX emp_annsal_ix;
+DROP INDEX emp_annsual_ix;
 
 --Drop Table with Recyclebin
 show recyclebin; -- 휴지통에 있는것 보기

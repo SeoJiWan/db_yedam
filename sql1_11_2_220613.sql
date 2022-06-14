@@ -219,7 +219,7 @@ CREATE SEQUENCE test_no_seq
                 START WITH 301
                 NOCACHE
                 NOCYCLE;
-                CREATE VIEW test_sum_vu
+CREATE VIEW test_sum_vu
 AS
 SELECT empno, ename, job, deptno
 FROM
@@ -254,6 +254,7 @@ FROM
     user_indexes
 WHERE
     table_name = 'TEST';
+
 -- 테이블 삭제시 index 객체만 사라지고 view, synonym 은 남아는 있으나 status = invalid 상태로 되어있음.
 SELECT
     object_name,
