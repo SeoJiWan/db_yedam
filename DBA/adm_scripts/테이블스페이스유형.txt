@@ -1,0 +1,36 @@
+테이블스페이스 유형
+-SYSTEM/Non-SYSTEM
+	- SYSTEM/SYSAUX : CREATE, DROP불가
+                          데이터딕셔너리 포함
+	- Non-SYSTEM : 목적에 따라 DB생성 후 추가
+
+-Contents(내용)
+	- Permanent : 영구적인 객체 저장용(테이블, 인덱스)
+	- Undo : 언두데이터 전용 (트랜잭션 종료 후 일정시간 후 휘발)
+	- Temporary : 정렬에 대한 임시 결과 (정렬완료 즉시 삭제)
+
+-정보보기
+	-DBA_TABLESPACES
+	-DBA_DATA_FILES
+
+-테이블 스페이스의 관리(용량변경)
+ - 새 데이터 파일 추가
+   : ALTER TABLESPACE 테이블스페이스 이름
+     ADD DATAFILE '경로/파일이름' SIZE 사이즈;
+    -> 사이즈 확대만 가능
+ - 기존 데이터파일 사이즈 변경
+   : ALTER DATABASE DATAFILE RESIZE 사이즈;
+    -> 사이즈 확대/축소 다 가능 
+
+-테이블 스페이스 관리(상태변경) 
+  : OFFLINE / ONLINE
+  : READ WRITE / READ ONLY -> READ WRITE를 쓰면 무조건 ONLINE이 됨
+    ALTER TABLESPACE 테이블 스페이스이름 상태;
+  : DBA_TABLESPACES의 STATUS 열에서 확인
+ 
+-테이블 스페이스 삭제
+  -DROP TABLESPACE  테이블스페이스 이름
+   INCLUDING CONTENTS AND DATA FILES; (저장하고 있는 물리적인 부분)
+
+-사용자 만들기 : em) 접속권한 default로 만들어짐
+                       terminal) 접속권한 default없음

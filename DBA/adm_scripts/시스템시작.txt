@@ -1,0 +1,5 @@
+lsnrctl start
+sqlplus / as sysdba
+startup
+exit
+emctl start dbconsole
